@@ -1,0 +1,20 @@
+FROM node:14.8.0-stretch
+
+# preparing dir, using chown because using node user
+RUN mkdir -p /hastesrv
+RUN chown node:node /hastesrv
+WORKDIR /hastesrv
+
+# installing dependancies
+COPY package*.json ./
+RUN npm install
+
+# using node usr
+USER node
+
+# copy the rest of the files
+COPY --chown=node:node . .
+
+EXPOSE 7777
+# run start script
+CMD ["npm", "start"]

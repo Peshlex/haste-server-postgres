@@ -33,7 +33,8 @@
   },
 
   "storage": {
-    "type": "file"
+    "type": "postgres",
+    "connectionUrl": "postgres://haster:secretr@pg:5432/haste_pgdb"
   },
 
   "documents": {
